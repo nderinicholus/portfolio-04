@@ -6,13 +6,19 @@
         <div class="col-md-10">
             <div class="card">
                 <div class="card-header inline-flex">{{ __('Services') }}
-                        <a href="{{ route('services.create') }}" class="btn btn-success btn-sm float-right">Create</a>
+                        <a href="{{ route('services.create') }}" class="btn btn-success btn-sm float-right">Create <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
                 
 
                 <div class="card-body">
 
-                    @if(($services->count()) > 0)
+                  @if(Session::has('success'))
+                    <div class="alert alert-success" role="alert">
+                        <strong>Success:</strong> {{ Session::get('success') }}
+                    </div>
+                    @endif
+
+                  @if (($services->count()) > 0)
                     
                     <table class="table table-striped">
                         <thead>
@@ -25,16 +31,19 @@
                         <tbody>
                           @foreach ($services as $service)
                           <tr>
-                            <th scope="row">1</th>
-                            <td>{{ $service->title }}</td>
+                            <th scope="row">{{ $loop->iteration }}</th>
+                            <td><a href="{{ route('services.show', $service->id) }}">{{ $service->title }}</a></td>
                             <td>
-                                <a href="{{ route('services.edit', $service->id) }}" class="btn btn-info btn-sm">Edit</a>
-
-                                <form action="{{ route('blog.destroy', $post->id) }}" method="POST">
+                                <a href="{{ route('services.edit', $service->id) }}" class="btn btn-info btn-sm float-left mr-1 text-white">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                </a>
+                                
+                            
+                                <form action="{{ route('services.destroy', $service->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 
-                                <input type="submit" value="Delete" class="btn btn-danger btn-sm form-control float-right">
+                                    <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="return confirm('Are you sure you want to delete {{ $service->title }}?')">Delete <i class="fa fa-trash"></i></button>
 
                                 </form>
                             </td>

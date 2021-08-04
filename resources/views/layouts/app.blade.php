@@ -40,33 +40,20 @@
                             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
                           </li>
                           <li class="nav-item">
-                            <a class="nav-link" href="/about">About</a>
+                            <a class="nav-link" href="{{ route('about') }}">About</a>
                           </li>
 
                           <li class="nav-item">
-                            <a class="nav-link" href="/services">Services</a>
+                            <a class="nav-link" href="{{ route('services') }}">Services</a>
                           </li>
 
-                          <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                              Service B
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                              <a class="dropdown-item" href="#">Lorem ipsum dolor sit amet.</a>
 
-                              <a class="dropdown-item" href="#">Lorem ipsum dolor sit amet consectetur.</a>
-
-                              <a class="dropdown-item" href="#">Lorem ipsum dolor sit amet consectetur adipisicing.</a>
-                              
-                            </div>
+                          <li class="nav-item">
+                            <a class="nav-link" href="{{ route('portfolio') }}">Portfolio</a>
                           </li>
 
                           <li class="nav-item">
-                            <a class="nav-link" href="/about">Portfolio</a>
-                          </li>
-
-                          <li class="nav-item">
-                            <a class="nav-link" href="/contact">Contact</a>
+                            <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                           </li>
 
                     </ul>
@@ -93,6 +80,12 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('services') }}">Pages</a>
+
+                                    <a class="dropdown-item" href="{{ route('services.index') }}">Services</a>
+
+                                    <a class="dropdown-item" href="{{ route('portfolio') }}">Portfolio</a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">

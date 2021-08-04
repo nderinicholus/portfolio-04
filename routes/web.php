@@ -1,5 +1,7 @@
 <?php
 
+// use App\Http\Controllers;
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,20 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front');
+Route::middleware('auth')->group(function() {
+    Route::resource('/admin/services', App\Http\Controllers\Admin\ServicesController::class);
 });
+
+
+Route::get('/', [App\Http\Controllers\PublicController::class, 'getFront'])->name('front');
+
+Route::get('/about', [App\Http\Controllers\PublicController::class, 'getAbout'])->name('about');
+Route::get('/services', [App\Http\Controllers\PublicController::class, 'getServices'])->name('services');
+Route::get('/portfolio', [App\Http\Controllers\PublicController::class, 'getPortfolio'])->name('portfolio');
+Route::get('/contact', [App\Http\Controllers\PublicController::class, 'getContact'])->name('contact');
+
+
+
 
 Auth::routes();
 

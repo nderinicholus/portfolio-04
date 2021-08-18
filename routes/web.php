@@ -3,6 +3,7 @@
 // use App\Http\Controllers;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function() {
     Route::resource('/admin/services', App\Http\Controllers\Admin\ServicesController::class);
+    Route::resource('/admin/portfolio', App\Http\Controllers\Admin\PortfolioController::class);
+    Route::resource('/admin/settings', App\Http\Controllers\Admin\SettingsController::class)->except(['settings.create', 'settings.index', 'settings.delete']);
 });
 
 
@@ -26,6 +29,12 @@ Route::get('/about', [App\Http\Controllers\PublicController::class, 'getAbout'])
 Route::get('/services', [App\Http\Controllers\PublicController::class, 'getServices'])->name('services');
 Route::get('/portfolio', [App\Http\Controllers\PublicController::class, 'getPortfolio'])->name('portfolio');
 Route::get('/contact', [App\Http\Controllers\PublicController::class, 'getContact'])->name('contact');
+
+Route::get('/dashboard', function (Request $request) {
+    return view('dashboard', [
+        'setting' => $request->user()->setting
+    ]);
+})->middleware(['auth'])->name('dashboard');
 
 
 

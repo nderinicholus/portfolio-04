@@ -9,4 +9,8 @@ class PublicController extends Controller
     public function getFront() {
         return view('front');
     }
+
+    public function getPortfolio() {
+        return view('front');
+    }
 }

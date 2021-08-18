@@ -36,23 +36,23 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
 
-                        <li class="nav-item active">
-                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        <li class="nav-item{{ request()->routeIs('front') ? " active" : "" }}">
+                            <a class="nav-link" href="{{ route('front') }}">Home <span class="sr-only">(current)</span></a>
                           </li>
-                          <li class="nav-item">
+                          <li class="nav-item{{ Request::route('about') ? " active" : "" }}">
                             <a class="nav-link" href="{{ route('about') }}">About</a>
                           </li>
 
-                          <li class="nav-item">
+                          <li class="nav-item{{ Request::route('services') ? " active" : "" }}">
                             <a class="nav-link" href="{{ route('services') }}">Services</a>
                           </li>
 
 
-                          <li class="nav-item">
+                          <li class="nav-item{{ Request::route('portfolio') ? " active" : "" }}">
                             <a class="nav-link" href="{{ route('portfolio') }}">Portfolio</a>
                           </li>
 
-                          <li class="nav-item">
+                          <li class="nav-item{{ Request::route('contact') ? " active" : "" }}">
                             <a class="nav-link" href="{{ route('contact') }}">Contact</a>
                           </li>
 
@@ -84,7 +84,12 @@
 
                                     <a class="dropdown-item" href="{{ route('services.index') }}">Services</a>
 
-                                    <a class="dropdown-item" href="{{ route('portfolio') }}">Portfolio</a>
+                                    <a class="dropdown-item" href="{{ route('portfolio.index') }}">Portfolio</a>
+
+                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="/dashboard">Settings</a>
+                                    <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();

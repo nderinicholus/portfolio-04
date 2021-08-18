@@ -25,7 +25,7 @@
                         </div>
 
                         <div class="form-group">
-                            <textarea class="form-control" name="body" id="body" placeholder="Enter Body">{{ $service->body }}</textarea>
+                            <textarea class="form-control" name="body" id="body" rows="10" placeholder="Enter Body">{{ $service->body }}</textarea>
                         </div>
 
                         <div class="form-group mb-3">

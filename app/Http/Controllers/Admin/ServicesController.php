@@ -108,9 +108,6 @@ class ServicesController extends Controller
             // 'photo' => 'sometimes|image|dimensions()->maxwidth(1000)',
         ]);
 
-        
-        
-
         $service = Service::findOrFail($id);
         $service->title = $request->title;
         $service->slug = Str::slug($request->title, '-');

@@ -15,6 +15,23 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    
+                    @if (Auth::user()->title)
+
+                        <a href="{{ route('settings.create') }}" class="btn btn-primary">Create</a>
+                    @else
+                    <div class="card" style="width: 18rem;">
+                        <div class="card-body">
+                          <h5 class="card-title">{{ Auth::user()->settings->id }}</h5>
+                          <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+                          
+                          <a href="{{ route('settings.edit', Auth::user()->id) }}" class="btn btn-primary">Edit</a>
+                        </div>
+                      </div>
+
+                        
+                    @endif
+                    
                 </div>
             </div>
         </div>

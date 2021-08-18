@@ -7,7 +7,7 @@
 
             <div class="border-bottom mb-3">
                 <h2 class="pt-3 text-muted">Update general settings</h2>
-                <span class="small"><a href="/dashboard">General Settings</a> > Update settings</span>
+                <span class="small"><a href="{{ route('dashboard') }}">Dashboard</a> > Update settings</span>
             </div>
             <div class="card">
                 <div class="card-header inline-flex">{{ __('General Settings')  }} </div>

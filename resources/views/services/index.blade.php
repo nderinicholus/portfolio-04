@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header inline-flex"><a href="/dashboard">Dashboard</a> > {{ __('Services') }}
+                <div class="card-header inline-flex"><a href="{{ route('dashboard') }}">Dashboard</a> > {{ __('Services') }}
                         <a href="{{ route('services.create') }}" class="btn btn-success btn-sm float-right">Create <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
                 

@@ -17,9 +17,13 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth')->group(function() {
+    Route::get('/admin/dashboard', [App\Http\Controllers\Admin\DashboardController::class, 'index'])->name('dashboard');
     Route::resource('/admin/services', App\Http\Controllers\Admin\ServicesController::class);
     Route::resource('/admin/portfolio', App\Http\Controllers\Admin\PortfolioController::class);
     Route::resource('/admin/settings', App\Http\Controllers\Admin\SettingsController::class)->except(['settings.create', 'settings.index', 'settings.delete']);
+    Route::resource('/admin/blog/categories', App\Http\Controllers\Admin\PostsCategoryController::class);
+    Route::resource('/admin/blog', App\Http\Controllers\Admin\PostsController::class);
+
 });
 
 
@@ -30,11 +34,11 @@ Route::get('/services', [App\Http\Controllers\PublicController::class, 'getServi
 Route::get('/portfolio', [App\Http\Controllers\PublicController::class, 'getPortfolio'])->name('portfolio');
 Route::get('/contact', [App\Http\Controllers\PublicController::class, 'getContact'])->name('contact');
 
-Route::get('/dashboard', function (Request $request) {
-    return view('dashboard', [
-        'setting' => $request->user()->setting
-    ]);
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function (Request $request) {
+//     return view('dashboard', [
+//         'setting' => $request->user()->setting
+//     ]);
+// })->middleware(['auth'])->name('dashboard');
 
 
 

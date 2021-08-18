@@ -5,8 +5,8 @@
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header inline-flex"><a href="{{ route('dashboard') }}">Dashboard</a> > {{ __('Portfolio') }}
-                        <a href="{{ route('portfolio.create') }}" class="btn btn-success btn-sm float-right">Create <i class="fa fa-plus" aria-hidden="true"></i></a>
+                <div class="card-header inline-flex"><a href="{{ route('dashboard') }}">Dashboard</a> > {{ __('Post Categories') }}
+                        <a href="{{ route('blog.create') }}" class="btn btn-success btn-sm float-right">Create <i class="fa fa-plus" aria-hidden="true"></i></a>
                 </div>
                 
 
@@ -18,7 +18,7 @@
                     </div>
                     @endif
 
-                  @if (($projects->count()) > 0)
+                  @if (($posts->count()) > 0)
                     
                     <table class="table table-striped">
                         <thead>
@@ -29,21 +29,21 @@
                           </tr>
                         </thead>
                         <tbody>
-                          @foreach ($projects as $project)
+                          @foreach ($posts as $category)
                           <tr>
                             <th scope="row">{{ $loop->iteration }}</th>
-                            <td><a href="{{ route('portfolio.show', $project->id) }}">{{ $project->title }}</a></td>
+                            <td><a href="{{ route('blog.show', $category->id) }}">{{ $category->title }}</a></td>
                             <td>
-                                <a href="{{ route('portfolio.edit', $project->id) }}" class="btn btn-info btn-sm float-left mr-1 text-white">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
+                                <a href="{{ route('blog.edit', $category->id) }}" class="btn btn-info btn-sm float-left mr-1 text-white">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i>
                                 </a>
                                 
                             
-                                <form action="{{ route('portfolio.destroy', $project->id) }}" method="POST">
+                                <form action="{{ route('blog.destroy', $category->id) }}" method="POST">
                                     {{ csrf_field() }}
                                     {{ method_field('DELETE') }}
 
                                     <button type="submit" class="btn btn-danger btn-sm"
-                                    onclick="return confirm('Are you sure you want to delete {{ $project->title }}?')">Delete <i class="fa fa-trash"></i></button>
+                                    onclick="return confirm('Are you sure you want to delete {{ $category->title }}?')">Delete <i class="fa fa-trash"></i></button>
 
                                 </form>
                             </td>
@@ -54,7 +54,7 @@
                       </table>
 
                       @else
-                      <div class="alert alert-info" role="alert">No projects found</div>
+                      <div class="alert alert-info" role="alert">No posts found</div>
 
                       @endif
 

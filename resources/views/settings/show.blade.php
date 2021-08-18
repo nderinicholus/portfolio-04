@@ -7,10 +7,10 @@
 
             <div class="border-bottom mb-3">
                 <h2 class="pt-3 text-muted">{{ $setting->title }}</h2>
-                <span class="small"><a href="/dashboard">General Settings</a> > Preview Setting</span>
+                <span class="small"><a href="{{ route('dashboard') }}">Dashboard</a> > Preview Setting</span>
             </div>
             <div class="card">
-                <div class="card-header inline-flex text-primary">{{ $setting->title }}, {{ $setting->user->name }}
+                <div class="card-header inline-flex text-primary">{{ $setting->title }}
                     <span class="float-right">
                         <a href="{{ route('settings.edit', $setting->id) }}" class="btn btn-info btn-sm text-white">Edit <i class="fa fa-pencil-square-o" aria-hidden="true"></i></a>
 

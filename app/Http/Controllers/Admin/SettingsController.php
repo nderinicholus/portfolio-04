@@ -30,7 +30,14 @@ class SettingsController extends Controller
      */
     public function create()
     {
-        return abort(404);
+        $setting = Setting::first();
+
+        if($setting) {
+            return redirect()->route('dashboard'); 
+            // return abort(404); 
+        } else {
+            return view('settings.create');
+        }
     }
 
     /**

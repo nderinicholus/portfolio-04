@@ -88,7 +88,7 @@
 
                                     <div class="dropdown-divider"></div>
 
-                                    <a class="dropdown-item" href="/dashboard">Settings</a>
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">Settings</a>
                                     <div class="dropdown-divider"></div>
 
                                     <a class="dropdown-item" href="{{ route('logout') }}"
